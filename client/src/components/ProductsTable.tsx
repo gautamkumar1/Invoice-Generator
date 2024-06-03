@@ -31,7 +31,7 @@ const ProductsTable = () => {
   };
 
   const getProducts = async () => {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/product/${id}`, {
+    const response = await fetch(`/api/product/${id}`, {
       method: "GET",
       credentials: "include",
       headers: {

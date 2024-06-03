@@ -37,7 +37,7 @@ const AddProductSheet = () => {
     }
 
     const res = await fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/api/product/addProduct/${id}`,
+      `/api/product/addProduct/${id}`,
       {
         method: "POST",
         credentials: "include",

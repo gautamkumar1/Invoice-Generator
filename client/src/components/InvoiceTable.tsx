@@ -20,7 +20,7 @@ const InvoiceTable = () => {
   );
 
   const getInvoices = async () => {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/invoice`, {
+    const response = await fetch(`/api/invoice`, {
       method: "POST",
       credentials: "include",
       headers: {

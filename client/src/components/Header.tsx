@@ -14,7 +14,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
-    await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`, {
+    await fetch(`/api/auth/logout`, {
       method: "POST",
       credentials: "include",
       headers: {
