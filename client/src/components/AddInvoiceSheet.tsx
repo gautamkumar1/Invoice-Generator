@@ -29,7 +29,7 @@ const AddInvoiceSheet = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:8000/api/invoice/addInvoice", {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/invoice/addInvoice`, {
       method: "POST",
       credentials: "include",
       headers: {

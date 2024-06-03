@@ -36,7 +36,7 @@ const SignIn = () => {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:8000/api/auth/signin", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signin`, {
         method: "POST",
         credentials: "include",
         headers: {
