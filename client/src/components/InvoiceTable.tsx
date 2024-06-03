@@ -2,7 +2,8 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableHeader, // Changed from TableHead to TableHeader
+  TableHead,
+  TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { useAppSelector } from "@/redux/hooks";
@@ -10,7 +11,6 @@ import { RootState } from "@/redux/store";
 import { Invoice } from "@/types/Invoice";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 const InvoiceTable = () => {
   const navigate = useNavigate();
   const { invoices } = useAppSelector((state: RootState) => state.invoices);
@@ -20,13 +20,7 @@ const InvoiceTable = () => {
   );
 
   const getInvoices = async () => {
-    const backendUrl = import.meta.env.VITE_BACKEND_URL;
-    if (!backendUrl) {
-      console.error("Backend URL is not defined");
-      return;
-    }
-
-    const response = await fetch(`${backendUrl}/api/invoice`, {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/invoice`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -43,7 +37,8 @@ const InvoiceTable = () => {
 
   useEffect(() => {
     getInvoices();
-  }, [invoices]); // Track invoices directly
+    
+  }, [invoices.length]);
 
   return (
     <>
@@ -55,8 +50,8 @@ const InvoiceTable = () => {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHeader className="w-[100px] text-orange-500 font-bold">Id</TableHeader> {/* Changed TableHead to TableHeader */}
-              <TableHeader className="text-center text-orange-500 font-bold">Invoice Name</TableHeader>
+              <TableHead className="w-[100px] text-orange-500 font-bold">Id</TableHead>
+              <TableHead className="text-center text-orange-500 font-bold">Invoice Name</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -69,7 +64,7 @@ const InvoiceTable = () => {
                   }}
                   className={"cursor-pointer"}
                 >
-                  <TableCell>{invoice._id}</TableCell>
+                  <TableCell >{invoice._id}</TableCell>
                   <TableCell className="text-center ">
                     {invoice.invoiceName}
                   </TableCell>
